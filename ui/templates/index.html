@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Madrid Player Goal Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Real Madrid Player Goal Prediction</h1>
+        
+        <form action="/predict" method="POST">
+            <label for="assists">Assists:</label>
+            <input type="text" id="assists" name="assists" required>
+            
+            <label for="completed_pass">Completed Passes:</label>
+            <input type="text" id="completed_pass" name="completed_pass" required>
+            
+            <label for="goals_scored">Goals Scored:</label>
+            <input type="text" id="goals_scored" name="goals_scored" required>
+            
+            <label for="assists_per_90">Assists Per 90:</label>
+            <input type="text" id="assists_per_90" name="assists_per_90" required>
+            
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if predicted_goals is not none %}
+        <h2>Predicted Goals: {{ predicted_goals }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
